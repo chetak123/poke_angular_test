@@ -1,0 +1,24 @@
+<h2>{{ (pokemon$ | async)?.name | titlecase }}</h2>
+
+<a routerLink="/pokemon">Return to Pokemon list</a>
+
+<p
+  *ngFor="
+    let flavorText of (pokemon$ | async)?.pokemon_v2_pokemonspeciesflavortexts
+  "
+>
+  {{ flavorText.flavor_text }}
+</p>
+
+<h3>Evolution Chain</h3>
+
+<ul
+  *ngFor="
+    let pokemon of (pokemon$ | async)?.pokemon_v2_evolutionchain
+      ?.pokemon_v2_pokemonspecies
+  "
+>
+  <li>
+    <a routerLink="/pokemon/{{ pokemon.id }}">{{ pokemon.name }}</a>
+  </li>
+</ul>

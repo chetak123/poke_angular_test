@@ -1,0 +1,9 @@
+<h2>Pokemon</h2>
+
+<ul>
+  <li *ngFor="let pokemon of pokemon$ | async">
+    <a routerLink="/pokemon/{{ pokemon.id }}">
+      <span>{{ pokemon.id }}</span> {{ pokemon.name }}
+    </a>
+  </li>
+</ul>
