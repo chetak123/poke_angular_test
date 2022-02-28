@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
-import { PokemonComponent } from './pokemon/pokemon.component';
+import { ListComponent } from './components/list/list.component';
+import { ViewComponent } from './components/view/view.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pokemon', pathMatch: 'full' },
-  { path: 'pokemon', component: PokemonListComponent },
-  { path: 'pokemon/:id', component: PokemonComponent },
+  { path: '', component: ListComponent },
+  { path: 'view/:name', component: ViewComponent },
+  { path: '**', component: ListComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'top'
+  })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
